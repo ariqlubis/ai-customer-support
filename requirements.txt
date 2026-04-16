@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+streamlit
+requests
+google-genai
+google-cloud-aiplatform
+faiss-cpu
+numpy
+loguru

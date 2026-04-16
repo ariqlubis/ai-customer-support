@@ -1,0 +1,402 @@
+[
+    {
+        "id": 1,
+        "category": "product",
+        "question": "Apa saja yang bisa dijaminkan di BFI Finance?",
+        "answer": "BFI Finance menerima jaminan berupa BPKB kendaraan bermotor (motor dan mobil) serta sertifikat properti seperti SHM/SHGB.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 2,
+        "category": "product",
+        "question": "Tahun berapa minimal kendaraan yang diterima?",
+        "answer": "Mobil minimal tahun 2005 untuk sedan/jeep/minibus (maksimal usia 20 tahun), dan 2012 untuk pick-up/truck (maksimal 13 tahun). Motor minimal tahun 2012 untuk merk Jepang.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 3,
+        "category": "product",
+        "question": "Apakah bisa mengajukan BPKB atas nama orang lain?",
+        "answer": "Bisa, dengan persetujuan dari pemilik BPKB asli sesuai nama yang tercantum.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 4,
+        "category": "product",
+        "question": "Apakah bisa mengajukan sertifikat atas nama orang lain?",
+        "answer": "Tidak, sertifikat SHM/SHGB harus atas nama sendiri atau pasangan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 5,
+        "category": "product",
+        "question": "Berapa bunga pinjaman di BFI Finance?",
+        "answer": "Bunga mulai dari 0,89% hingga 1,1% per bulan untuk mobil dan properti, serta sekitar 2,25% untuk motor.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 6,
+        "category": "product",
+        "question": "Berapa tenor pinjaman yang tersedia?",
+        "answer": "Mobil: 12–48 bulan, Motor: 12–36 bulan, Sertifikat: 12–70 bulan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 7,
+        "category": "product",
+        "question": "Berapa nominal pinjaman untuk jaminan BPKB?",
+        "answer": "Minimal Rp1 juta dan maksimal menyesuaikan kondisi kendaraan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 8,
+        "category": "product",
+        "question": "Berapa nominal pinjaman untuk jaminan sertifikat?",
+        "answer": "Minimal Rp300 juta dan maksimal menyesuaikan nilai properti.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 9,
+        "category": "product",
+        "question": "Apakah bisa mengajukan pinjaman jika tinggal di kos?",
+        "answer": "Tidak bisa. Tempat tinggal harus rumah milik sendiri, keluarga, kontrakan, atau rumah dinas.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 10,
+        "category": "branch",
+        "question": "Dimana lokasi kantor cabang BFI Finance?",
+        "answer": "Informasi cabang tersedia di https://www.bfi.co.id/id/branch-office",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 11,
+        "category": "branch",
+        "question": "Apakah semua cabang menerima semua jenis jaminan?",
+        "answer": "BPKB diterima di seluruh Indonesia kecuali Aceh. Sertifikat hanya di kota tertentu seperti Jabodetabek, Surabaya, Medan, dan lainnya.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 12,
+        "category": "branch",
+        "question": "Bagaimana cara menemukan cabang terdekat?",
+        "answer": "Silakan cek melalui https://www.bfi.co.id/id/branch-office",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 13,
+        "category": "application",
+        "question": "Bagaimana proses pengajuan pinjaman?",
+        "answer": "Setelah mengisi formulir, tim akan menghubungi untuk jadwal survei dan verifikasi sebelum proses persetujuan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 14,
+        "category": "application",
+        "question": "Bagaimana jika tidak dihubungi oleh call center?",
+        "answer": "Anda mungkin masih dalam antrean. Bisa menghubungi melalui web chat di website resmi.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 15,
+        "category": "application",
+        "question": "Apa saja dokumen yang dibutuhkan untuk pengajuan?",
+        "answer": "Dokumen meliputi KTP, KK, bukti penghasilan, rekening listrik/PBB, serta dokumen jaminan seperti STNK atau sertifikat.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 16,
+        "category": "customer_service",
+        "question": "Bagaimana jika saya lupa nomor kontrak?",
+        "answer": "Hubungi cabang atau customer service melalui call center 1500018 atau email resmi.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 17,
+        "category": "customer_service",
+        "question": "Bagaimana cara mengecek sisa angsuran?",
+        "answer": "Cek melalui https://www.bfi.co.id/id/layanan/service/service-status dengan nomor terdaftar.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 18,
+        "category": "payment",
+        "question": "Dimana bisa melakukan pembayaran angsuran?",
+        "answer": "Pembayaran dapat dilakukan melalui berbagai channel resmi yang tersedia di website BFI.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 19,
+        "category": "payment",
+        "question": "Apa saja metode pembayaran yang tersedia?",
+        "answer": "Metode pembayaran meliputi transfer bank, virtual account, dan payment point resmi.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 20,
+        "category": "general",
+        "question": "Bagaimana cara menghubungi BFI Finance?",
+        "answer": "Anda dapat menghubungi melalui call center, email, atau website resmi BFI Finance.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 21,
+        "category": "application",
+        "question": "Apakah bisa mengajukan pinjaman secara online?",
+        "answer": "Ya, pengajuan dapat dilakukan melalui website resmi dengan mengisi formulir yang tersedia.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 22,
+        "category": "application",
+        "question": "Apakah harus datang ke cabang untuk pengajuan?",
+        "answer": "Tidak selalu, proses awal dapat dilakukan online, namun verifikasi tetap dilakukan oleh tim BFI.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 23,
+        "category": "application",
+        "question": "Berapa lama proses pencairan dana?",
+        "answer": "Pencairan dana dilakukan setelah proses verifikasi selesai dan pengajuan disetujui.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 24,
+        "category": "application",
+        "question": "Apakah semua pengajuan pasti disetujui?",
+        "answer": "Tidak, setiap pengajuan akan melalui proses analisis dan persetujuan berdasarkan kebijakan perusahaan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 25,
+        "category": "application",
+        "question": "Apa yang mempengaruhi persetujuan pinjaman?",
+        "answer": "Faktor seperti kelengkapan data, riwayat kredit, dan kondisi jaminan mempengaruhi keputusan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 26,
+        "category": "product",
+        "question": "Apakah kendaraan harus atas nama sendiri?",
+        "answer": "Tidak harus, namun diperlukan persetujuan dari pemilik sesuai ketentuan yang berlaku.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 27,
+        "category": "product",
+        "question": "Apakah kendaraan harus dalam kondisi baik?",
+        "answer": "Ya, kondisi kendaraan akan diperiksa saat proses survei untuk menentukan kelayakan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 28,
+        "category": "product",
+        "question": "Apakah kendaraan yang masih kredit bisa dijaminkan?",
+        "answer": "Tidak, kendaraan harus dalam kondisi lunas sebelum dapat dijadikan jaminan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 29,
+        "category": "product",
+        "question": "Apakah sertifikat rumah harus atas nama pemohon?",
+        "answer": "Ya, sertifikat harus atas nama sendiri atau pasangan sesuai ketentuan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 30,
+        "category": "product",
+        "question": "Apakah ada biaya administrasi?",
+        "answer": "Biaya administrasi dapat dikenakan sesuai kebijakan dan akan diinformasikan saat proses pengajuan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 31,
+        "category": "payment",
+        "question": "Apakah bisa membayar lebih cepat dari jatuh tempo?",
+        "answer": "Ya, pembayaran dapat dilakukan sebelum jatuh tempo sesuai ketentuan yang berlaku.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 32,
+        "category": "payment",
+        "question": "Apakah bisa melunasi pinjaman lebih awal?",
+        "answer": "Bisa, namun mungkin dikenakan biaya sesuai perjanjian.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 33,
+        "category": "payment",
+        "question": "Apa yang terjadi jika telat bayar?",
+        "answer": "Keterlambatan pembayaran dapat dikenakan denda dan mempengaruhi riwayat kredit.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 34,
+        "category": "payment",
+        "question": "Apakah ada denda keterlambatan?",
+        "answer": "Ya, denda dikenakan sesuai kebijakan perusahaan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 35,
+        "category": "payment",
+        "question": "Kapan tanggal jatuh tempo pembayaran?",
+        "answer": "Tanggal jatuh tempo ditentukan dalam kontrak pembiayaan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 36,
+        "category": "customer_service",
+        "question": "Apakah ada layanan customer service?",
+        "answer": "Ya, layanan tersedia melalui call center, email, dan website resmi.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 37,
+        "category": "customer_service",
+        "question": "Jam operasional customer service?",
+        "answer": "Jam operasional mengikuti kebijakan perusahaan dan dapat dilihat di website resmi.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 38,
+        "category": "customer_service",
+        "question": "Bagaimana cara mengajukan keluhan?",
+        "answer": "Keluhan dapat disampaikan melalui call center atau email resmi BFI Finance.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 39,
+        "category": "customer_service",
+        "question": "Apakah ada layanan online chat?",
+        "answer": "Ya, tersedia layanan chat melalui website resmi.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 40,
+        "category": "customer_service",
+        "question": "Apakah bisa mengubah data pribadi?",
+        "answer": "Perubahan data dapat dilakukan dengan menghubungi cabang atau customer service.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 41,
+        "category": "branch",
+        "question": "Apakah semua kota memiliki cabang BFI?",
+        "answer": "BFI memiliki banyak cabang di Indonesia, namun tidak semua kota memiliki cabang.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 42,
+        "category": "branch",
+        "question": "Apakah bisa mengurus pinjaman di cabang berbeda?",
+        "answer": "Pengajuan biasanya diproses oleh cabang terdekat dari domisili.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 43,
+        "category": "branch",
+        "question": "Apakah cabang buka di hari libur?",
+        "answer": "Operasional cabang mengikuti hari kerja dan kebijakan perusahaan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 44,
+        "category": "general",
+        "question": "Apakah BFI Finance terdaftar di OJK?",
+        "answer": "Ya, BFI Finance merupakan perusahaan pembiayaan yang terdaftar dan diawasi oleh OJK.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 45,
+        "category": "general",
+        "question": "Apakah data saya aman?",
+        "answer": "Data pelanggan dikelola sesuai kebijakan privasi perusahaan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 46,
+        "category": "general",
+        "question": "Apakah bisa mengajukan pinjaman tanpa jaminan?",
+        "answer": "Produk BFI umumnya memerlukan jaminan sesuai jenis pembiayaan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 47,
+        "category": "general",
+        "question": "Apakah bisa mengajukan lebih dari satu pinjaman?",
+        "answer": "Hal ini tergantung pada hasil evaluasi dan kebijakan perusahaan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 48,
+        "category": "general",
+        "question": "Apakah ada simulasi pinjaman?",
+        "answer": "Simulasi pinjaman dapat tersedia melalui website atau saat konsultasi dengan petugas.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 49,
+        "category": "general",
+        "question": "Apakah bisa mengajukan pinjaman untuk usaha?",
+        "answer": "Ya, pinjaman dapat digunakan untuk berbagai kebutuhan termasuk usaha sesuai ketentuan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    },
+    {
+        "id": 50,
+        "category": "general",
+        "question": "Apakah ada batas usia pemohon?",
+        "answer": "Batas usia mengikuti kebijakan perusahaan dan akan dievaluasi saat pengajuan.",
+        "source": "BFI FAQ",
+        "language": "id"
+    }
+]
