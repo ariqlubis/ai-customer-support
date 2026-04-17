@@ -28,7 +28,7 @@ def chat(query: str):
     global chat_history
 
     try:
-        result = get_rag().generate_answer(query, chat_history)  # <-- Panggil get_rag()
+        result, debug = get_rag().generate_answer(query, chat_history)  # <-- Panggil get_rag()
         chat_history.append({
             "question": query,
             "answer": result
@@ -37,12 +37,15 @@ def chat(query: str):
         if len(chat_history) > 10:
             chat_history.pop(0)
 
+        logger.info(f"Response generated")
+        return {
+            "query": query,
+            "answer": result,
+            "debug": debug
+        }
+
     except Exception as e:
         logger.error(f"Error: {e}")
         return {"error": "Something went wrong"}
 
-    logger.info(f"Response generated")
-    return {
-        "query": query,
-        "answer": result
-    }
+

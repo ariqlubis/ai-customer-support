@@ -69,11 +69,51 @@ class RAGSystem:
 
         return contextualization_query
     
+    def rerank_documents(self, query, docs):
+        logger.info(f"Reranking {len(docs)} documents...")
+
+        docs_formatted = ""
+        for idx, doc in enumerate(docs):
+            docs_formatted += f"[{idx}] {doc}\n\n"
+
+        prompt = f"""
+        Tugas Anda adalah memilih 3 dokumen yang PALING RELEVAN untuk menjawab pertanyaan berikut.
+        Urutkan berdasarkan tingkat relevansinya.
+
+        Pertanyaan: {query}
+
+        Daftar dokumen:
+        {docs_formatted}
+
+        Kembalikan HANYA nomor indeks dokumen (contoh: 2, 0, 5) tanpa penjelasan apapun.
+        """
+
+        response = client.models.generate_content(
+            model=GENERATION_MODEL,
+            contents=prompt
+        )
+
+        try:
+            selected_indices = [int(i.strip()) for i in response.text.split(',')]
+            reranked_docs = [docs[i] for i in selected_indices if i < len(docs)]
+            return reranked_docs
+        except Exception as e:
+            logger.warning(f"Rerank failed: {e}. Falling back to top documents")
+            return docs[:3]
+
+    
     def generate_answer(self, query, history=[]):
         logger.info("Generating answer with LLM...")
+        debug_info = {}
         standalone_query = self.contextualization_query(query, history)
-        docs = self.search(standalone_query)
-        context = "\n\n".join(docs)
+        debug_info['standalone_query'] = standalone_query
+
+        docs = self.search(standalone_query, k=10)
+        debug_info['raw_retrieval'] = docs
+
+        final_docs = self.rerank_documents(standalone_query, docs)
+        debug_info['reranked_docs'] = final_docs
+        context = "\n\n".join(final_docs)
 
         conversation = ""
         for h in history[-3:]:
@@ -82,13 +122,18 @@ class RAGSystem:
         response = client.models.generate_content(
             model=GENERATION_MODEL,
             contents=f"""
-            Anda adalah customer support BFI Finance.
-            Jawab hanya berdasarkan konteks berikut.
-            Jika tidak ada jawaban, katakan tidak tahu.
-                     
-            Context:
+            Anda adalah Customer Support BFI Finance yang solutif.
+            
+            Tugas: Jawab pertanyaan user sesuai dengan informasi di Konteks.
+            
+            Konteks:
             {context}
 
+            Aturan:
+            1. Jika informasi ada di konteks (meskipun tidak eksplisit angka/durasi), jelaskan apa yang ada di konteks tersebut.
+            2. Gunakan bahasa yang ramah dan profesional.
+            3. Jika benar-benar tidak ada hubungannya sama sekali, barulah katakan Anda tidak tahu.
+                     
             Riwayat percakapan:
             {conversation}
    
@@ -96,5 +141,6 @@ class RAGSystem:
             {query}
             """
         )
-        return response.text
+
+        return response.text, debug_info
         
