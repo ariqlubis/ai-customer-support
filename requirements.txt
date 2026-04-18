@@ -7,3 +7,4 @@ google-cloud-aiplatform
 faiss-cpu
 numpy
 loguru
+qdrant-client

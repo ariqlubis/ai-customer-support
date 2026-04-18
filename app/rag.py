@@ -1,42 +1,53 @@
 import json
 import numpy as np
 import faiss
+import pickle
+import os
 from .embedding import get_embedding, get_embedding_batch
 from .config import TOP_K, GENERATION_MODEL, client
 from .logger import get_logger
+from qdrant_client import QdrantClient
 
 logger = get_logger()
 
 class RAGSystem:
-    def __init__(self, data_path: str="data/faq.json"):
-        self.texts = []
-        self.metadata = []
-        self.index = None
-        self.load_data(data_path)
+    def __init__(self, collection_name='faq_collection'):
+        self.collection_name = collection_name
+        q_client_host = os.getenv("QDRANT_HOST", "localhost")
+        q_client_port = os.getenv("QDRANT_PORT", 6333)
+        q_api_key = os.getenv("QDRANT_API_KEY", None)
 
-    def load_data(self, data_path: str):
-        logger.info("Loading data...")
-        with open(data_path, 'r') as f:
-            data = json.load(f)
+        try:
+            if q_api_key:
+                logger.info(f"Connecting to QDRANT CLOUD at {q_client_host}")
+                self.q_client = QdrantClient(
+                    url=q_client_host,
+                    api_key=q_api_key,
+                    timeout=60
+                )
+                
+            else:
+                logger.info(f"Connecting to QDRANT LOCAL at {q_client_host}:{q_client_port}")
+                self.q_client = QdrantClient(host=q_client_host, port=q_client_port)
 
-        for i in data:
-            text = f"Q: {i['question']}\nA: {i['answer']}"
-            self.texts.append(text)
-            self.metadata.append(i)
-        
-        logger.info(f"Total documents: {len(self.texts)}")
-        embeddings = get_embedding_batch(self.texts)
-        embeddings = np.array(embeddings)
-
-        self.index = faiss.IndexFlatL2(len(embeddings[0]))
-        self.index.add(embeddings)
+            if not self.q_client.collection_exists(collection_name):
+                logger.warning(f"Collection {self.collection_name} does not exist. Please run the setup_qdrant.py script first.")
+                raise ValueError("Collection tidak terdeteksi")
+        except Exception as e:
+            logger.error(f"Failed to connect to Qdrant: {e}")
+            raise e
 
     def search(self, query, k=TOP_K):
         logger.info(f"Searching for query: {query}")
-        q_emb = np.array([get_embedding(query)])
-        distances, indices = self.index.search(q_emb, k)
+        q_emb = get_embedding(query)
+        search_result = self.q_client.query_points(
+            collection_name=self.collection_name,
+            query=q_emb,
+            limit=k
+        )
+        retrieved_texts = [hit.payload['text'] for hit in search_result.points]
 
-        return [self.texts[i] for i in indices[0]]
+        return retrieved_texts
 
     def contextualization_query(self, query, history=[]):
         if not history:
