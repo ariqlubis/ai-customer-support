@@ -11,6 +11,8 @@ dependencies = [
     "google-genai>=1.72.0",
     "loguru>=0.7.3",
     "numpy>=2.4.4",
+    "psycopg2-binary>=2.9.11",
+    "qdrant-client>=1.17.1",
     "streamlit>=1.56.0",
     "uvicorn>=0.44.0",
 ]

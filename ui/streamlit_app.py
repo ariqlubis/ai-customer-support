@@ -32,7 +32,7 @@ if prompt := st.chat_input("Apa yang ingin anda tanyakan?"):
 
         if "answer" in response:
             answer = response['answer']
-            debug_info = response.get('debug', {}) # Ambil info debug
+            debug_info = response.get('debug', {}) 
 
             with st.chat_message("assistant"):
                 st.markdown(answer)
