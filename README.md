@@ -1,4 +1,4 @@
-# AI Customer Support (BFI Finance)
+# AI Customer Support
 
 An AI-powered Customer Support Copilot built with a Retrieval-Augmented Generation (RAG) architecture. This system is designed to automatically answer Frequently Asked Questions (FAQ) with high accuracy using Google Generative AI and vector search.
 
