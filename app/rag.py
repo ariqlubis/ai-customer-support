@@ -1,12 +1,9 @@
-import json
-import numpy as np
-import faiss
-import pickle
 import os
 from .embedding import get_embedding, get_embedding_batch
 from .config import TOP_K, GENERATION_MODEL, client
 from .logger import get_logger
 from qdrant_client import QdrantClient
+from google.cloud import discoveryengine_v1 as discoveryengine
 
 logger = get_logger()
 
