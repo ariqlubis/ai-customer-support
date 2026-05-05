@@ -1,4 +1,4 @@
-# AI Customer Support Copilot: Factual & Scalable RAG for Multifinance
+# AI Customer Support Copilot: Factual & Scalable RAG 
 
 **Core Conclusion:**
 This project delivers a production-ready AI Copilot that eliminates AI hallucinations and automates up to 70% of customer inquiries. By grounding Google Gemini in BigQuery Vector Search, we ensure every response is based on official company documentation, making it safe for the highly regulated Multifinance industry.
