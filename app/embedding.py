@@ -1,11 +1,11 @@
-from .config import client, EMBEDDING_MODEL
+from .config import client, settings
 from google.genai.types import EmbedContentConfig
 import time
 
 def get_embedding(text: str):
     """Gets embedding for a single string."""
     response = client.models.embed_content(
-        model=EMBEDDING_MODEL,
+        model=settings.EMBEDDING_MODEL,
         contents=[text],
         config=EmbedContentConfig(task_type='RETRIEVAL_QUERY')
     )
@@ -17,7 +17,7 @@ def get_embedding_batch(texts: list[str], batch_size: int=50):
     for i in range(0, len(texts), batch_size):
         batch = texts[i:i + batch_size]
         response = client.models.embed_content(
-            model=EMBEDDING_MODEL,
+            model=settings.EMBEDDING_MODEL,
             contents=batch,
             config=EmbedContentConfig(task_type='RETRIEVAL_DOCUMENT')
         )

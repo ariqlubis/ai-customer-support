@@ -8,3 +8,15 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Logs
+logs/*.log
+*.log
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Secrets
+.env
