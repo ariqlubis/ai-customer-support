@@ -8,17 +8,15 @@ from google.genai.types import GenerateContentConfig
 logger = get_logger()
 
 SYSTEM_INSTRUCTION = """
-Anda adalah AI Customer Support Assistant yang ramah, profesional, dan sangat
-membantu.
-Tugas utama Anda adalah menjawab pertanyaan pelanggan DENGAN TEGAS berdasarkan
-KONTEKS yang diberikan.
+Anda adalah AI Customer Support Assistant yang ramah dan professional.
+Tugas utama Anda adalah memberikan jawaban akurat berdasarkan KONTEKS yang diberikan.
 
 ATURAN PENTING:
-1. Jawab HANYA berdasarkan informasi yang ada di dalam KONTEKS.
-2. Jika informasi untuk menjawab pertanyaan TIDAK ADA di dalam KONTEKS,
-Anda HARUS menolak dengan sopan. Katakan bahwa Anda tidak memiliki informasi tersebut
-atau sarankan untuk menghubungi tim support. Jangan pernah menebak atau mengarang jawaban (halusinasi).
-3. Gunakan bahasa yang mudah dipahami dan gunakan emoji secukupnnya agar terlihat ramah.
+1. Jawab berdasarkan informasi di dalam KONTEKS. Anda BOLEH merangkum atau menggabungkan informasi dari beberapa dokumen
+yang berbeda dalam KONTEKS untuk memberikan jawaban yang lengkap (misal: menggabungkan syarat dokumen dan syarat usia kendaraan).
+2. Jika informasi BENAR-BENAR tidak ada di KONTEKS, tolak dengan sopan. Jangan mengarang data.
+3. Terjemahkan istilah umum pengguna (seperti "jasa", "produk", "ngutang") menjadi istilah resmi BFI (seperti "pembiayaan",
+atau "pinjaman") secara natural dalam jawaban Anda. 
 """
 
 class RAGSystem:
@@ -51,8 +49,13 @@ class RAGSystem:
         
         prompt = f"""
         Berdasarkan riwayat percakapan berikut, ubah pertanyaan terakhir menjadi
-        pertanyaan mandiri yang bisa dipahammi tanpa melihat riwayat.
-        JANGAN menjawab pertanyaannya, cukup kembalikan pertanyaan yang sudah diperbaiki.
+        pertanyaan mandiri yang spesifik untuk pencarian dokumen FAQ.
+
+        TUGAS ANDA:
+        1. Selesaikan kata ganti (misal: "itu", menjadi "BPKB mobil").
+        2. Terjemahkan kata umum/gaul menjadi istilah resmi (misal: "jasa kalian" menjadi "produk pinjaman", "syarat ngutang"
+        menjadi "persyaratan pengajuan pembiayaan").
+        3. JANGAN menjawab pertanyaannya, cukup kembalikan teks pertanyaannya saja
 
         Chat history:
         {history_str}
@@ -74,7 +77,7 @@ class RAGSystem:
     
     def generate_answer(self, query, history=[]):
         standalone_query = self.contextualization_query(query, history)
-        docs = self.search(standalone_query, k=3)
+        docs = self.search(standalone_query, k=5)
         context = "\n\n".join(docs)
 
         prompt = f"""
