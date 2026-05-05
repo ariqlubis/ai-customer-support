@@ -8,7 +8,7 @@ This project delivers a production-ready AI Copilot that eliminates AI hallucina
 ## 1. Executive Framework (SCQA)
 
 ### Situation
-In the Multifinance sector (e.g., BFI Finance), customer support teams handle a massive volume of complex inquiries daily. Customers expect instant and accurate information regarding loan requirements, interest rates, and payment procedures.
+In the Multifinance sector, customer support teams handle a massive volume of complex inquiries daily. Customers expect instant and accurate information regarding loan requirements, interest rates, and payment procedures.
 
 ### Complication
 Traditional automation tools face three critical failures in this environment:
