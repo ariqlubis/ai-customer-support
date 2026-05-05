@@ -1,0 +1,53 @@
+steps:
+  # 1. Build Backend Image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/ai-support-app/app-image:latest', '.']
+
+  # 2. Push Backend Image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/ai-support-app/app-image:latest']
+
+  # 3. Deploy Backend to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'ai-support-chatbot'
+      - '--image'
+      - 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/ai-support-app/app-image:latest'
+      - '--region'
+      - 'asia-southeast2'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--set-env-vars'
+      - 'LOCATION=us-central1'
+
+  # 4. Build Frontend Image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'Dockerfile.ui', '-t', 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/ai-support-app/ui-image:latest', '.']
+
+  # 5. Push Frontend Image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/ai-support-app/ui-image:latest']
+
+  # 6. Automate Deployment of Frontend with Dynamic Backend URL
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "Fetching Backend URL..."
+        BACKEND_URL=$(gcloud run services describe ai-support-chatbot --region asia-southeast2 --format 'value(status.url)')
+        echo "Deploying UI with BACKEND_URL: $$BACKEND_URL"
+        gcloud run deploy ai-support-ui \
+          --image asia-southeast2-docker.pkg.dev/$PROJECT_ID/ai-support-app/ui-image:latest \
+          --region asia-southeast2 \
+          --platform managed \
+          --allow-unauthenticated \
+          --set-env-vars BACKEND_URL=$$BACKEND_URL
+
+images:
+  - 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/ai-support-app/app-image:latest'
+  - 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/ai-support-app/ui-image:latest'

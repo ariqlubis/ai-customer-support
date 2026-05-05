@@ -1,16 +1,21 @@
 import os
 from google import genai
+from pydantic_settings import BaseSettings
 
-PROJECT_ID = 'idx-doc-intelligence'
-LOCATION = "asia-southeast1"
+class Settings(BaseSettings):
+    PROJECT_ID: str = 'ai-customer-support-c'
+    LOCATION: str = "us-central1"
+    EMBEDDING_MODEL: str = 'text-embedding-004'
+    GENERATION_MODEL: str = 'gemini-2.5-flash'
+    TOP_K: int = 5
 
-EMBEDDING_MODEL = 'gemini-embedding-001'
-GENERATION_MODEL = 'gemini-2.5-flash'
+    class Config:
+        env_file = ".env"
 
-TOP_K = 5
+settings = Settings()
 
 client = genai.Client(
     vertexai=True,
-    project=PROJECT_ID,
-    location=LOCATION
+    project=settings.PROJECT_ID,
+    location=settings.LOCATION
 )

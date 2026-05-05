@@ -1,4 +1,9 @@
 from fastapi import FastAPI
+from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
+import json
+from pydantic import BaseModel
+from typing import List, Optional
 from .rag import RAGSystem
 from .logger import get_logger
 
@@ -6,46 +11,46 @@ logger = get_logger()
 app = FastAPI()
 
 rag = None  
-chat_history = []
 
 def get_rag():
-    """Lazy initialization - hanya buat RAGSystem saat pertama kali dibutuhkan"""
     global rag
     if rag is None:
         logger.info("Initializing RAG system...")
         rag = RAGSystem()
     return rag
 
+class ChatMessage(BaseModel):
+    question: str
+    answer: str
+
+class ChatRequest(BaseModel):
+    query: str
+    history: Optional[List[ChatMessage]] = []
+
 @app.get("/")
 def health_check():
-    """Health check endpoint agar Cloud Run tahu container sudah siap"""
     return {"status": "ok"}
 
-@app.get("/chat")
-def chat(query: str):
-    logger.info(f"Incoming query: {query}")
-
-    global chat_history
+@app.post("/chat")
+def chat(request: ChatRequest):
+    logger.info(f"Incoming query: {request.query}")
 
     try:
-        result, debug = get_rag().generate_answer(query, chat_history)  # <-- Panggil get_rag()
-        chat_history.append({
-            "question": query,
-            "answer": result
-        })
+        formatted_history = [{"question": h.question, "answer": h.answer} for h in request.history]
+        stream, debug = get_rag().generate_answer(request.query, formatted_history)  
 
-        if len(chat_history) > 10:
-            chat_history.pop(0)
+        def event_generator():
+            yield json.dumps({"type": "debug", "data": debug}) + "\n"
+            for chunk in stream:
+                if chunk.text:
+                    yield json.dumps({"type": "chunk", "content": chunk.text}) + "\n"
 
-        logger.info(f"Response generated")
-        return {
-            "query": query,
-            "answer": result,
-            "debug": debug
-        }
+        logger.info(f"Streaming response started")
+        return StreamingResponse(event_generator(), media_type="application/x-ndjson")
 
     except Exception as e:
         logger.error(f"Error: {e}")
+        return {"error": str(e)}
         return {"error": "Something went wrong"}
 
 
