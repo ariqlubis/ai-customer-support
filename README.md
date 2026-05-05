@@ -60,4 +60,3 @@ Ensure the following variables are set in your environment or Cloud Run settings
 *   `BACKEND_URL`: The URL of your deployed Backend service.
 
 ---
-*Targeted for Digital Transformation Initiatives in the Financial Services Sector.*
